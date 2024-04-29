@@ -65,6 +65,13 @@ namespace Matrices
     ostream& operator<<(ostream& os, const Matrix& a);
 
     /*******************************************************************************/
+    
+
+
+    //Everything above here is done
+
+
+
 
     ///2D rotation matrix
     ///usage:  A = R * A rotates A theta radians counter-clockwise
@@ -73,6 +80,10 @@ namespace Matrices
         public:
             ///Call the parent constructor to create a 2x2 matrix
             ///Then assign each element as follows:
+            RotationMatrix(int _i, int _j) : Matrix(2, 2) 
+            {
+
+            }
             /*
             cos(theta)  -sin(theta)
             sin(theta)   cos(theta)
@@ -88,6 +99,10 @@ namespace Matrices
         public:
             ///Call the parent constructor to create a 2x2 matrix
             ///Then assign each element as follows:
+            ScalingMatrix(int _i, int _j) : Matrix(2, 2)
+            {
+
+            }
             /*
             scale   0
             0       scale
