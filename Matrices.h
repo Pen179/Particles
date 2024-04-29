@@ -79,17 +79,13 @@ namespace Matrices
     {
         public:
             ///Call the parent constructor to create a 2x2 matrix
-            ///Then assign each element as follows:
-            RotationMatrix(int _i, int _j) : Matrix(2, 2) 
-            {
-
-            }
+            ///Then assign each element as follows
             /*
             cos(theta)  -sin(theta)
             sin(theta)   cos(theta)
             */
             ///theta represents the angle of rotation in radians, counter-clockwise
-            RotationMatrix(double theta);
+            RotationMatrix(double theta) : Matrix(2, 2) { cos(theta), -sin(theta), sin(theta), cos(theta); }
     };
 
     ///2D scaling matrix
@@ -99,16 +95,12 @@ namespace Matrices
         public:
             ///Call the parent constructor to create a 2x2 matrix
             ///Then assign each element as follows:
-            ScalingMatrix(int _i, int _j) : Matrix(2, 2)
-            {
-
-            }
             /*
             scale   0
             0       scale
             */
             ///scale represents the size multiplier
-            ScalingMatrix(double scale);
+            ScalingMatrix(double scale) : Matrix(2, 2) { scale, 0, 0, scale; }
     };
 
     ///2D Translation matrix
@@ -125,7 +117,10 @@ namespace Matrices
             ///paramaters are xShift, yShift, and nCols
             ///nCols represents the number of columns in the matrix
             ///where each column contains one (x,y) coordinate pair
-            TranslationMatrix(double xShift, double yShift, int nCols);
+            TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) 
+            {
+                
+            }
     };
 }
 
