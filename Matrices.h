@@ -85,7 +85,13 @@ namespace Matrices
             sin(theta)   cos(theta)
             */
             ///theta represents the angle of rotation in radians, counter-clockwise
-            RotationMatrix(double theta) : Matrix(2, 2) cos(theta), -sin(theta), sin(theta), cos(theta) {}
+            RotationMatrix(double theta) : Matrix(2, 2) 
+            {
+                a.at(0).at(0) = cos(theta);
+                a.at(0).at(1) = -sin(theta);
+                a.at(1).at(0) = sin(theta);
+                a.at(1).at(1) = cos(theta);
+            }
     };
 
     ///2D scaling matrix
@@ -100,7 +106,13 @@ namespace Matrices
             0       scale
             */
             ///scale represents the size multiplier
-            ScalingMatrix(double scale) : Matrix(2, 2) : scale, 0, 0, scale; {}
+            ScalingMatrix(double scale) : Matrix(2, 2)
+            {
+                a.at(0).at(0) = scale;
+                a.at(0).at(1) = 0;
+                a.at(1).at(0) = 0;
+                a.at(1).at(1) = scale;
+            }
     };
 
     ///2D Translation matrix
@@ -119,12 +131,11 @@ namespace Matrices
             ///where each column contains one (x,y) coordinate pair
             TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) 
             {
-                Matrix a(2, nCols);
                 for (int i = 0; i < nCols; i++) {
-                    a(0, i) = xShift;
+                    a.at(0).at(i) = xShift;
                 }
                 for (int i = 0; i < nCols; i++) {
-                    a(1, i) = yShift;
+                    a.at(1).at(i) = yShift;
                 }
             }
     };
