@@ -1,9 +1,9 @@
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
-//These are just testing comments
+
 #include <cmath>
 #include <iostream>
-#include <vector>
+#include <vector>s
 #include <iomanip>
 using namespace std;
 
@@ -119,7 +119,13 @@ namespace Matrices
             ///where each column contains one (x,y) coordinate pair
             TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) 
             {
-                
+                Matrix a(2, nCols);
+                for (int i = 0; i < nCols; i++) {
+                    a(0, i) = xShift;
+                }
+                for (int i = 0; i < nCols; i++) {
+                    a(1, i) = yShift;
+                }
             }
     };
 }
