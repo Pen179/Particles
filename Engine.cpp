@@ -2,10 +2,6 @@
 
 using namespace std;
 using namespace sf;
-<<<<<<< HEAD
-=======
-
->>>>>>> 415bd124a6f8ae36f443d874f8c84455adcac9e3
 
 Engine::Engine()
 {
