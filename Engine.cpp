@@ -5,17 +5,17 @@ using namespace sf;
 
 Engine::Engine()
 {
-	m_Window.create();
+	//I took out m_Window.create() and just replaced all the window with m_Window.
 
 	int pixelWidth = sf::VideoMode::getDesktopMode().width;
 	int pixelHeight = sf::VideoMode::getDesktopMode().height;
 	VideoMode vm(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height);
-	RenderWindow window(vm, "Particles", Style::Default);
+	RenderWindow m_Window(vm, "Particles", Style::Default);
 
 	View view;
 	view.setSize(pixelWidth, pixelHeight);
 	view.setCenter(pixelWidth / 2, pixelHeight / 2);
-	window.setView(view);
+	m_Window.setView(view);
 
 
 }

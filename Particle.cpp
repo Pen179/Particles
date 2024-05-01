@@ -1,5 +1,10 @@
 #include "Particle.h"
 
+Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) 
+{
+
+}
+
 
 bool Particle::almostEqual(double a, double b, double eps)
 {
