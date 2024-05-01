@@ -1,10 +1,35 @@
 #include "Particle.h"
 
-Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) 
+Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints) 
+{
+    m_ttl = TTL;
+    m_numPoints = numPoints;
+    m_radiansPerSec = (float)rand() / (RAND_MAX)* M_PI;
+    m_cartesianPlane.setCenter(0, 0);
+    m_cartesianPlane.setSize(target.getSize().x, (-1.0) * target.getSize().y);
+    target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
+    m_vx = 100 + rand() % 401;
+    m_vy = 100 + rand() % 401;
+    m_color1 = Color::Red;
+    m_color1 = Color::Blue;
+    int angle = rand() % 90;
+    double theta = angle / 180 * M_PI;
+    double dtheta = 2 * M_PI / (numPoints - 1);
+    for (int j = 0; j < numPoints; j++)
+    {
+        int r = 20 + rand() % 61;
+        double dx = r * cos(theta);
+        double dy = r * sin(theta);
+        m_A(0, j) = m_centerCoordinate.x + dx;
+        m_A(1, j) = m_centerCoordinate.y + dy;
+    }
+}
+//The Particle constructor should be done.
+
+void Particle::draw(RenderTarget& target, RenderStates states) const
 {
 
 }
-
 
 bool Particle::almostEqual(double a, double b, double eps)
 {

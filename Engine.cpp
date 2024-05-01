@@ -71,6 +71,10 @@ void Engine::input()
 }
 
 void Engine::update(float dtAsSeconds)			//this one still needs work, ill finish this later using a less janky for loop
+
+//*************************************************************
+//I think we use an iterator loop here as opposed to a for loop
+//***************************************************************
 {
 	//attempt 1
 	/*for (int i = 0; i < m_particles.size(); )
