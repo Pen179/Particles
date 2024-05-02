@@ -15,6 +15,8 @@ public:
 	Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition);
 	virtual void draw(RenderTarget& target, RenderStates states) const override;
     void update(float dt);
+    void translate(double, double);
+    void rotate(double);
     float getTTL() { return m_ttl; }
 
     //Functions for unit testing
