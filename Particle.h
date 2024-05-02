@@ -15,8 +15,8 @@ public:
 	Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition);
 	virtual void draw(RenderTarget& target, RenderStates states) const override;
     void update(float dt);
-    void translate(double, double);
-    void rotate(double);
+   // void translate(double, double);
+   // void rotate(double);
     float getTTL() { return m_ttl; }
 
     //Functions for unit testing
@@ -35,6 +35,7 @@ private:
     Color m_color2;
     Matrix m_A;
 
+    
     ///rotate Particle by theta radians counter-clockwise
     ///construct a RotationMatrix R, left mulitply it to m_A
     void rotate(double theta);
@@ -46,4 +47,5 @@ private:
     ///shift the Particle by (xShift, yShift) coordinates
     ///construct a TranslationMatrix T, add it to m_A
     void translate(double xShift, double yShift);
+    
 };

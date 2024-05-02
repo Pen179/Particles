@@ -15,14 +15,14 @@ namespace Matrices {
 			}
 		}
 	}
-	double& Matrix::operator()(int i, int j) {
+	/*double& Matrix::operator()(int i, int j) {
 		//return a[i][j];
 		return a.at(i).at(j);
 	}
 	const double& Matrix::operator()(int i, int j) const
 	{
 		return a.at(i).at(j);
-	}
+	}*/
 	///Add each corresponding element.
 	///usage:  c = a + b;
 	Matrix operator+(const Matrix & a, const Matrix & b)

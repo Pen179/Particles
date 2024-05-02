@@ -6,11 +6,12 @@ using namespace sf;
 Engine::Engine()
 {
 	//I took out m_Window.create() and just replaced all the window with m_Window.
+	//m_Window.create(vm, "Particles", Style::Default)
 
 	int pixelWidth = sf::VideoMode::getDesktopMode().width;
 	int pixelHeight = sf::VideoMode::getDesktopMode().height;
 	VideoMode vm(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height);
-	RenderWindow m_Window(vm, "Particles", Style::Default);
+	m_Window.create(vm, "Particles", Style::Default);
 
 	View view;
 	view.setSize(pixelWidth, pixelHeight);
@@ -72,6 +73,7 @@ void Engine::input()
 
 void Engine::update(float dtAsSeconds)	
 {
+	//Maybe push_back something
 	//iteratres through the vector
 	for (auto it = m_particles.begin(); it != m_particles.end();) 
 	{
