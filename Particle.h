@@ -12,8 +12,8 @@ using namespace sf;
 class Particle : public Drawable
 {
 public:
-	Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition);
-	virtual void draw(RenderTarget& target, RenderStates states) const override;
+    Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition);
+    virtual void draw(RenderTarget& target, RenderStates states) const override;
     void update(float dt);
     void translate(double, double);
     void rotate(double);
@@ -26,7 +26,7 @@ public:
 private:
     float m_ttl;
     int m_numPoints;
-	Vector2f m_centerCoordinate;
+    Vector2f m_centerCoordinate;
     float m_radiansPerSec;
     float m_vx;
     float m_vy;
@@ -37,7 +37,6 @@ private:
 
     ///rotate Particle by theta radians counter-clockwise
     ///construct a RotationMatrix R, left mulitply it to m_A
-    void rotate(double theta);
 
     ///Scale the size of the Particle by factor c
     ///construct a ScalingMatrix S, left multiply it to m_A
@@ -45,5 +44,4 @@ private:
 
     ///shift the Particle by (xShift, yShift) coordinates
     ///construct a TranslationMatrix T, add it to m_A
-    void translate(double xShift, double yShift);
 };
