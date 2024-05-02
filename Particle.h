@@ -38,16 +38,15 @@ private:
     
     ///rotate Particle by theta radians counter-clockwise
     ///construct a RotationMatrix R, left mulitply it to m_A
-
+    void rotate(double);
     ///Scale the size of the Particle by factor c
     ///construct a ScalingMatrix S, left multiply it to m_A
     void scale(double c);
 
     ///shift the Particle by (xShift, yShift) coordinates
     ///construct a TranslationMatrix T, add it to m_A
-<<<<<<< HEAD
+
     void translate(double xShift, double yShift);
     
-=======
->>>>>>> f2a6a2403f79486bdcdc3e372b24489105027bb1
+
 };
