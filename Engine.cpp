@@ -70,37 +70,23 @@ void Engine::input()
 	}
 }
 
-void Engine::update(float dtAsSeconds)			//this one still needs work, ill finish this later using a less janky for loop
-
-//*************************************************************
-//I think we use an iterator loop here as opposed to a for loop
-//***************************************************************
+void Engine::update(float dtAsSeconds)	
 {
-	//attempt 1
-	/*for (int i = 0; i < m_particles.size(); )
+	//iteratres through the vector
+	for (auto it = m_particles.begin(); it != m_particles.end();) 
 	{
-		if (m_particles.at(i).getTTL() > 0.0)
+		//if it the TTL hasnt expired, update and go to the next particle
+		if (it->getTTL() > 0.0)
 		{
-			i++;
+			it->update(dtAsSeconds);
+			it++;
 		}
+		//if it has expired, erase that particle, and keep the it so that it hits whatever particle takes the spot of the one just erased, this should avoid it going out of bounds.
 		else
 		{
-			m_particles.erase(i);
+			it = m_particles.erase(it);
 		}
 	}
-
-	//attempt 2
-	for (auto it = m_particles.begin(); it != m_particles.end(); ++it) {
-		//auto i = distance(m_particles.begin(), it);
-		if (m_particles.at(it).getTTL() > 0.0)
-		{
-			i++;
-		}
-		else
-		{
-			m_particles.erase(i);
-		}
-	}*/
 }
 
 void Engine::draw()
