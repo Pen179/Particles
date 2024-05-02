@@ -25,7 +25,6 @@ void Engine::run()
 {
 	//local variables
 	Clock local_clock;
-	Particle local_particle(m_Window, 4, { (int)m_Window.getSize().x / 2, (int)m_Window.getSize().y / 2 }); //particle for normal use
 
 	//unit test
 	cout << "Starting Particle unit tests..." << endl;
@@ -36,11 +35,13 @@ void Engine::run()
 	//game loop
 	while (m_Window.isOpen() == true)
 	{
-		local_clock.restart();
-		float dtAsSec = local_clock.getElapsedTime().asSeconds();
+		float dtAsSec = local_clock.restart().asSeconds();
 		input();
+		//cout << "input" << endl;
 		update(dtAsSec);
+		//cout << "update" << endl;
 		draw();
+		//cout << "draw" << endl;
 	}
 
 }
