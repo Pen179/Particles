@@ -6,19 +6,17 @@ using namespace sf;
 Engine::Engine()
 {
 	//I took out m_Window.create() and just replaced all the window with m_Window.
-	//m_Window.create(vm, "Particles", Style::Default)
 
 	int pixelWidth = sf::VideoMode::getDesktopMode().width;
 	int pixelHeight = sf::VideoMode::getDesktopMode().height;
 	VideoMode vm(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height);
-	m_Window.create(vm, "Particles", Style::Default);
-
+	
 	View view;
 	view.setSize(pixelWidth, pixelHeight);
 	view.setCenter(pixelWidth / 2, pixelHeight / 2);
 	m_Window.setView(view);
-
-
+	
+	m_Window.create(vm, "Particles", Style::Default);
 }
 
 void Engine::run()
@@ -27,11 +25,12 @@ void Engine::run()
 	Clock local_clock;
 
 	//unit test
+	
 	cout << "Starting Particle unit tests..." << endl;
 	Particle p(m_Window, 4, { (int)m_Window.getSize().x / 2, (int)m_Window.getSize().y / 2 }); //particle for unit tests
 	p.unitTests();
 	cout << "Unit tests complete.  Starting engine..." << endl;
-
+	
 	//game loop
 	while (m_Window.isOpen() == true)
 	{
@@ -59,7 +58,8 @@ void Engine::input()
 				//create 5 particles on left click
 				for (int i = 0; i <= 5; i++)
 				{
-					Particle new_particle(m_Window, (rand() % 25) + 25, { event.mouseButton.x, event.mouseButton.y });
+					Particle new_particle(m_Window, 25 + (rand() % 25), { event.mouseButton.x, event.mouseButton.y });
+					//Particle new_particle(m_Window, 28, { 960, 540 });
 					m_particles.push_back(new_particle);
 				}
 

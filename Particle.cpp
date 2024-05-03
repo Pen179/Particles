@@ -8,20 +8,24 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     m_cartesianPlane.setCenter(0, 0);
     m_cartesianPlane.setSize(target.getSize().x, (-1.0) * target.getSize().y);
     m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
-    m_vx = 100 + rand() % 401;
-    m_vy = 100 + rand() % 401;
-    m_color1 = Color::Red;
-    m_color2 = Color::Blue;
+    m_vx = 100 + rand() % 201;
+    m_vy = 100 + rand() % 201;
+    m_color1 = Color::White;
+    m_color2 = rand_color();
     int angle = rand() % 90;
     double theta = angle / 180 * M_PI;
     double dtheta = 2 * M_PI / (numPoints - 1);
     for (int j = 0; j < numPoints; j++)
     {
-        int r = 20 + rand() % 61;
-        double dx = r * cos(theta);
-        double dy = r * sin(theta);
+        int r;
+        r = 20 + rand() % 61;
+        double dx; 
+        dx = r * cos(theta);
+        double dy; 
+        dy = r * sin(theta);
         m_A(0, j) = m_centerCoordinate.x + dx;
         m_A(1, j) = m_centerCoordinate.y + dy;
+        theta += dtheta;
     }
 }
 //The Particle constructor should be done.
@@ -29,10 +33,10 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
 void Particle::draw(RenderTarget& target, RenderStates states) const
 {
     VertexArray lines(TriangleFan, m_numPoints + 1);
-    Vector2f center = Vector2f(target.mapCoordsToPixel(m_centerCoordinate, m_cartesianPlane)); //for some reason, it doens't work for Vector2f
+    Vector2f center = Vector2f(target.mapCoordsToPixel(m_centerCoordinate, m_cartesianPlane)); 
     lines[0].position = center;
     lines[0].color = m_color1;
-    for (int j = 1; j < m_numPoints; j++)
+    for (int j = 1; j <= m_numPoints; j++)
     {
         lines[j].position = Vector2f(target.mapCoordsToPixel(Vector2f(m_A(0, j-1), m_A(1, j-1)), m_cartesianPlane));
         lines[j].color = m_color2;
@@ -136,7 +140,7 @@ void Particle::unitTests()
         cout << "Failed." << endl;
     }
 
-    
+
     cout << "Testing Particles..." << endl;
     cout << "Testing Particle mapping to Cartesian origin..." << endl;
     if (m_centerCoordinate.x != 0 || m_centerCoordinate.y != 0)
@@ -178,7 +182,7 @@ void Particle::unitTests()
     bool scalePassed = true;
     for (int j = 0; j < initialCoords.getCols(); j++)
     {
-        if (!almostEqual(m_A(0, j), 0.5 * initialCoords(0,j)) || !almostEqual(m_A(1, j), 0.5 * initialCoords(1, j)))
+        if (!almostEqual(m_A(0, j), 0.5 * initialCoords(0, j)) || !almostEqual(m_A(1, j), 0.5 * initialCoords(1, j)))
         {
             cout << "Failed mapping: ";
             cout << "(" << initialCoords(0, j) << ", " << initialCoords(1, j) << ") ==> (" << m_A(0, j) << ", " << m_A(1, j) << ")" << endl;
