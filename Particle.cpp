@@ -7,11 +7,11 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     m_radiansPerSec = (float)rand() / (RAND_MAX)* M_PI;
     m_cartesianPlane.setCenter(0, 0);
     m_cartesianPlane.setSize(target.getSize().x, (-1.0) * target.getSize().y);
-    target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
+    m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
     m_vx = 100 + rand() % 401;
     m_vy = 100 + rand() % 401;
     m_color1 = Color::Red;
-    m_color1 = Color::Blue;
+    m_color2 = Color::Blue;
     int angle = rand() % 90;
     double theta = angle / 180 * M_PI;
     double dtheta = 2 * M_PI / (numPoints - 1);
