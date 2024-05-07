@@ -56,9 +56,9 @@ void Engine::input()
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
 				//create 5 particles on left click
-				for (int i = 0; i <= 5; i++)
+				for (int i = 0; i < 5; i++)
 				{
-					Particle new_particle(m_Window, 25 + (rand() % 25), { event.mouseButton.x, event.mouseButton.y });
+					Particle new_particle(m_Window, 25 + (rand() % 26), { event.mouseButton.x, event.mouseButton.y });
 					//Particle new_particle(m_Window, 28, { 960, 540 });
 					m_particles.push_back(new_particle);
 				}

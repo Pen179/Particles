@@ -34,6 +34,7 @@ void Particle::draw(RenderTarget& target, RenderStates states) const
 {
     VertexArray lines(TriangleFan, m_numPoints + 1);
     Vector2f center = Vector2f(target.mapCoordsToPixel(m_centerCoordinate, m_cartesianPlane)); 
+    //Vector2f center = m_centerCoordinate;
     lines[0].position = center;
     lines[0].color = m_color1;
     for (int j = 1; j <= m_numPoints; j++)
